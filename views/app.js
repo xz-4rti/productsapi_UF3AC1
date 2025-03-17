@@ -1,4 +1,5 @@
 const express = require('express')
+const slugify = require('slugify');
 const products_routes = require('./routes/products.js')
 
 //Server instantiation
@@ -17,7 +18,9 @@ app.use(express.json())
 app.use('/', products_routes)
 
 app.get('/', (req, res) => {
-    res.render('index'); // Ensure views/index.pug exists
+    const welcomeMessage = "Bienvenido al servidor Express";
+    const slugifiedMessage = slugify(welcomeMessage, { replacement: '*', lower: true });
+    res.send(slugifiedMessage);
 });
 
 //Server startup
