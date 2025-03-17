@@ -4,6 +4,9 @@ const products_routes = require('./routes/products.js')
 //Server instantiation
 const app = express()
 
+// Use environment variable for PORT
+const PORT = process.env.PORT || 5000;
+
 //Server configuration: template engine
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -14,8 +17,8 @@ app.use(express.json())
 app.use('/', products_routes)
 
 //Server startup
-app.listen(5000, () => {
-    console.log('server is listening on port 5000')
-})
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
+});
 
 
