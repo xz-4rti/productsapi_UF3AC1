@@ -16,9 +16,14 @@ app.use(express.static('/views'));
 app.use(express.json())
 app.use('/', products_routes)
 
+app.get('/', (req, res) => {
+    res.render('index'); // Ensure views/index.pug exists
+});
+
 //Server startup
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
 });
+
 
 
